@@ -1,0 +1,10 @@
+<prism-highlight id="ng-content" [interpolation]="this" [language]="language">{{code.content}}</prism-highlight>
+<prism-highlight id="code-css" [language]="'css'" [code]="code.css"></prism-highlight>
+<prism-highlight id="code-html" [language]="'html'" [code]="code.html"></prism-highlight>
+<prism-highlight 
+  id="code-interpolation" 
+  [interpolation]="this" 
+  [language]="language" 
+  [code]="code.html"
+  (changes)="subscription"
+></prism-highlight>
