@@ -1,5 +1,15 @@
 # @ngx-prism/rxjs
 
+[![npm version](https://badge.fury.io/js/%40ngx-prism%2Frxjs.svg)](https://badge.fury.io/js/%40ngx-prism%2Frxjs)
+[![GitHub version](https://badge.fury.io/gh/ngx-prism%2Frxjs.svg)](https://badge.fury.io/gh/ngx-prism%2Frxjs)
+[![Build Status](https://travis-ci.org/ngx-prism/rxjs.svg?branch=master)](https://travis-ci.org/ngx-prism/rxjs)
+[![Known Vulnerabilities](https://snyk.io/test/github/ngx-prism/rxjs/badge.svg)](https://snyk.io/test/github/ngx-prism/rxjs)
+
+[![GitHub issues](https://img.shields.io/github/issues/ngx-prism/rxjs.svg)](https://github.com/ngx-prism/rxjs/issues)
+[![GitHub forks](https://img.shields.io/github/forks/ngx-prism/rxjs.svg)](https://github.com/ngx-prism/rxjs/network)
+[![GitHub stars](https://img.shields.io/github/stars/ngx-prism/rxjs.svg)](https://github.com/ngx-prism/rxjs/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ngx-prism/rxjs/master/LICENSE)
+
 Simple Angular 2+ Prism highlighter module with Rxjs.
 
 Here is [@ngx-prism/core](https://github.com/ngx-prism/core) without Rxjs.
