@@ -10,9 +10,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/ngx-prism/rxjs.svg)](https://github.com/ngx-prism/rxjs/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ngx-prism/rxjs/master/LICENSE)
 
-Simple Angular 2+ Prism highlighter module with Rxjs.
-
-[Click](https://github.com/ngx-prism/core) to go to package without Rxjs.
+Simple Angular 2+ Prism highlighter module with Rxjs. [Click](https://github.com/ngx-prism/core) to go to package without Rxjs.
 
 Pros:
 * Component changeDetection is set to `OnPush`, it gives better overall performance.
@@ -34,7 +32,7 @@ Cons:
   * [@Input](#input)
   * [Lifecycle Hooks](#lifecycle-hooks)
 * [Scripts](#scripts)
-* Git
+* [Git](#git)
   * [Commit](#commit)
   * [Versioning](#versioning)
 * [License](#license)
