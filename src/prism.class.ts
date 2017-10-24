@@ -14,12 +14,12 @@ import * as _ from 'lodash-es';
 import { PrismInterface } from './prism.interface';
 import { CallbackType, SanitizedType } from './prism.type';
 import { PrismService } from './prism.service';
-import { SubscriptionInterface } from './prism.interface';
 
 /**
  * @export
  * @abstract
  * @class PrismClass
+ * @implements {PrismInterface}
  */
 @Injectable()
 export abstract class PrismClass implements PrismInterface {
@@ -54,7 +54,6 @@ export abstract class PrismClass implements PrismInterface {
    * @type {string}
    * @memberof PrismClass
    */
-  // public _code: string;
   @Input('code') set code(value: SanitizedType | undefined) {
     if (value) {
       if (typeof (value) === 'string') {
@@ -120,14 +119,17 @@ export abstract class PrismClass implements PrismInterface {
    */
   @ViewChild('codeElementRef') public codeElementRef: ElementRef;
 
-  protected subscription: SubscriptionInterface = {};
-
+  /**
+   * Creates an instance of PrismClass.
+   * @param {PrismService} prismService
+   * @memberof PrismClass
+   */
   constructor(public prismService: PrismService) { }
 
   /**
    * Observe changes with specific `prop`. If found any, set property `change` to `true`.
    * @protected
-   * @param {string} prop
+   * @param {(string | string[])} prop
    * @param {SimpleChanges} changes
    * @memberof PrismClass
    */
