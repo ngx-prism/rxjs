@@ -1,6 +1,6 @@
 {
   "name": "@ngx-prism/rxjs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Simple Angular 2+ Prism highlighter module with Rxjs.",
   "author": "Ścibor Rudnicki <scibor.rudnicki@wwwdev.io> (http://ngx-prism.wwwwdev.io)",
   "homepage": "https://github.com/ngx-prism/rxjs#readme",
@@ -78,11 +78,29 @@
     "zone.js": "^0.8.18"
   },
   "keywords": [
-    "angular prism", "angular prismjs", "angular2 prismjs", "angular2 prism", "angular4 prism", "angular4 prismjs", 
-    "angular prism rxjs", "angular prismjs rxjs", "angular2 prismjs rxjs", "angular2 prism rxjs", "angular4 prism rxjs", "angular4 prismjs rxjs", 
-    "ngx prism", "ngx prism rxjs", 
-    "ng prism", "ng prismjs", "ng prism rxjs", "ng2 prism", "ng4 prism", "ng4 prismjs", "ng4 prismjs rxjs",
-    "@ngx-prism", "@ngx-prism/rxjs"
+    "angular prism",
+    "angular prismjs",
+    "angular2 prismjs",
+    "angular2 prism",
+    "angular4 prism",
+    "angular4 prismjs",
+    "angular prism rxjs",
+    "angular prismjs rxjs",
+    "angular2 prismjs rxjs",
+    "angular2 prism rxjs",
+    "angular4 prism rxjs",
+    "angular4 prismjs rxjs",
+    "ngx prism",
+    "ngx prism rxjs",
+    "ng prism",
+    "ng prismjs",
+    "ng prism rxjs",
+    "ng2 prism",
+    "ng4 prism",
+    "ng4 prismjs",
+    "ng4 prismjs rxjs",
+    "@ngx-prism",
+    "@ngx-prism/rxjs"
   ],
   "repository": {
     "type": "git",
