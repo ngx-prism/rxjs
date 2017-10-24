@@ -2,6 +2,7 @@
 import {
   AfterViewInit,
   Component,
+  ChangeDetectorRef,
   ChangeDetectionStrategy,
   ElementRef,
   EventEmitter,
@@ -14,17 +15,22 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash-es';
+import { Subscribe } from '@ngx-reactive/decorator';
 
 // internal
 import { PrismClass } from './prism.class';
 import { PrismService } from './prism.service';
+import { SanitizedType } from './prism.type';
 
 /**
  * @export
  * @class PrismComponent
  * @extends {PrismClass}
- * @implements {OnDestroy}
+ * @implements {AfterViewInit}
+ * @implements {OnChanges}
+ * @implements {OnInit}
  */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,13 +39,53 @@ import { PrismService } from './prism.service';
   selector: 'prism-highlight',
   templateUrl: './prism.component.html'
 })
-export class PrismComponent extends PrismClass implements AfterViewInit, OnChanges, OnDestroy {
+@Subscribe<SanitizedType>(['code', 'language'])
+export class PrismComponent extends PrismClass implements AfterViewInit, OnChanges, OnInit {
 
-  constructor(public prismService: PrismService) {
-    super(prismService);
-    this.subscribe();
+  code$: Observable<SanitizedType>;
+  code$$$: Subscription;
+  language$: Observable<SanitizedType>;
+  language$$$: Subscription;
+
+  /**
+   * @memberof PrismComponent
+   */
+  ngOnInit() {
+    this.code$$$ = this.code$.subscribe({
+      next: (code: SanitizedType) => {
+        if (this.codeElementRef) {
+          if (this.change === true) {
+            this.codeElementRef.nativeElement.innerHTML = code;
+            this.prismService.highlightElement(this.codeElementRef);
+            this.change = false;
+          }
+        }
+      }
+    });
+    this.language$$$ = this.language$.subscribe({
+      next: (language: string) => {
+        if (this.codeElementRef) {
+          if (this.change === true) {
+            this.prismService.highlightElement(this.codeElementRef);
+            this.change = false;
+          }
+        }
+      }
+    });
   }
 
+  /**
+   * Creates an instance of PrismComponent.
+   * @param {PrismService} prismService
+   * @memberof PrismComponent
+   */
+  constructor(public prismService: PrismService) {
+    super(prismService);
+  }
+
+  /**
+   * @memberof PrismComponent
+   */
   ngAfterViewInit() {
     this.prismService.highlightElement(this.codeElementRef);
   }
@@ -51,48 +97,5 @@ export class PrismComponent extends PrismClass implements AfterViewInit, OnChang
    */
   ngOnChanges(changes: SimpleChanges) {
     this.onChanges(['code', 'language'], changes);
-  }
-
-  /**
-   * OnDestroy unsubscribe `code` and `language` subscription.
-   * @memberof PrismComponent
-   */
-  ngOnDestroy() {
-    if (this.subscription) {
-      if (this.subscription.code) {
-        this.subscription.code.unsubscribe();
-      }
-      if (this.subscription.language) {
-        this.subscription.language.unsubscribe();
-      }
-    }
-  }
-
-  /**
-   * Set subscribes with `prismService` to property `language` and `code`.
-   * @memberof PrismComponent
-   */
-  subscribe() {
-    this.subscription.language = this.prismService.subscribe('language', {
-      next: language => {
-        if (this.codeElementRef) {
-          if (this.change === true) {
-            this.prismService.highlightElement(this.codeElementRef);
-            this.change = false;
-          }
-        }
-      }
-    });
-    this.subscription.code = this.prismService.subscribe('code', {
-      next: code => {
-        if (this.codeElementRef) {
-          if (this.change === true) {
-            this.codeElementRef.nativeElement.innerHTML = code;
-            this.prismService.highlightElement(this.codeElementRef);
-            this.change = false;
-          }
-        }
-      }
-    });
   }
 }
