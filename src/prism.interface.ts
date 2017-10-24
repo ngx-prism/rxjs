@@ -12,8 +12,3 @@ export interface PrismInterface {
   language: string;
   interpolation: Object | undefined;
 }
-
-export interface SubscriptionInterface {
-  code?: Subscription;
-  language?: Subscription;
-};
