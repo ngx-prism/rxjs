@@ -12,7 +12,18 @@
 
 Simple Angular 2+ Prism highlighter module with Rxjs.
 
-Here is [@ngx-prism/core](https://github.com/ngx-prism/core) without Rxjs.
+[Click](https://github.com/ngx-prism/core) to go to package without Rxjs.
+
+Pros:
+* Component changeDetection is set to `OnPush`, it gives better overall performance.
+* Dynamically change highlight string with `code` input property.
+* Interpolate string to highlight with `interpolation` object.
+* `@ngx-reactive/decorator` with `rxjs/Subject` to Subscribe to `code` and `language` property changes.
+
+Cons:
+* With `async` true does not work properly.
+* Hooks are defined globally.
+
 
 ----
 
