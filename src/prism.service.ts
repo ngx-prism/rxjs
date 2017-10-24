@@ -68,7 +68,6 @@ export class PrismService {
     if (value) {
       value = this.sanitizer.sanitize(SecurityContext.HTML, this.escapeHtml(value));
     }
-    this.next('code', value);
   }
   get code(): SanitizedType | undefined {
     return this._code;
@@ -110,7 +109,6 @@ export class PrismService {
   public _language: string;
   set language(value: string) {
     this._language = value;
-    this.next('language', value);
   }
   get language(): string {
     return this._language;
@@ -120,16 +118,6 @@ export class PrismService {
   private prism = Prism;
 
   constructor(private sanitizer: DomSanitizer) { }
-
-  /**
-   * @param {('code' | 'language')} property
-   * @param {PartialObserver<string>} observer
-   * @returns {Subscription}
-   * @memberof PrismService
-   */
-  public subscribe(property: 'code' | 'language', observer: PartialObserver<string>): Subscription {
-    return this[`${property}$`].subscribe(observer);
-  }
 
   /**
    * @param {ElementRef} codeElementRef
@@ -158,7 +146,7 @@ export class PrismService {
   /**
    * @private
    * @param {string} unsafe
-   * @returns
+   * @returns {SanitizedType}
    * @memberof PrismService
    */
   private escapeHtml(unsafe: string): SanitizedType {
@@ -168,17 +156,5 @@ export class PrismService {
          .replace(/>/g, '&gt;')
          .replace(/"/g, '&quot;')
          .replace(/'/g, '&#039;');
-  }
-
-  /**
-   * @private
-   * @param {('code' | 'language')} property
-   * @param {(string | null)} value
-   * @memberof PrismService
-   */
-  private next(property: 'code' | 'language', value: SanitizedType | undefined): void {
-    setTimeout(() => {
-      this.subject[property].next(value);
-    }, 0);
   }
 }
