@@ -175,7 +175,7 @@ It is designed to use `ng-content` and property `code` separately. You can **NOT
 [Angular Lifecycle Hooks](https://angular.io/guide/lifecycle-hooks)
 
 **ngAfterViewInit()**    
-Performs `highlightElement(element, async, callback)` prismjs method when.
+Performs `highlightElement(element, async, callback)` prismjs method.
 
 **ngOnChanges()**    
 Detect input property `code` or `language` changes by comparing `currentValue` to `previousValue`.    
@@ -184,8 +184,8 @@ If yes, set component property `change` to `true`.
 **ngOnDestroy()**   
 Unsubscribe Rxjs.Subject subscription in Object property `subscription.code` and `subscription.language`.
 
-**constructor()**  
-Initiate subscribes to property `code` and `language`.
+**ngOnInit()**   
+Initiate subscribes to property `code` and `language` with `@ngx-reactive/decorator` decorator `Subscribe()`.
 
 ## Scripts
 
