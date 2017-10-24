@@ -54,7 +54,7 @@ describe('PrismComponent', () => {
     comp.code = `<p align="center">This is my paragraph</p>`;
     comp.ngAfterViewInit();
     fixture.detectChanges();
-    comp.prismService.subscribe('code', {
+    comp.code$.subscribe({
       next: code => expect(nativeElement.querySelector('span[class*="token tag"]')).toBeTruthy()
     });
     expect(nativeElement.querySelector('code[class*="language-html"]')).toBeTruthy();
@@ -69,7 +69,7 @@ describe('PrismComponent', () => {
     comp.code = `<p align="center">This is my {{interpolated}} paragraph</p>`;
     comp.ngAfterViewInit();
     fixture.detectChanges();
-    comp.prismService.subscribe('code', {
+    comp.code$.subscribe({
       next: code => expect(nativeElement.querySelector('code[class*="language-html"]').innerHTML)
         .toContain(comp.interpolation['interpolated'])
     });
